@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PricingRule index{% endblock %}
+
+{% block body %}
+    <h1>PricingRule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pricing_rule in pricing_rules %}
+            <tr>
+                <td>{{ pricing_rule.id }}</td>
+                <td>{{ pricing_rule.name }}</td>
+                <td>{{ pricing_rule.quantity }}</td>
+                <td>{{ pricing_rule.amount }}</td>
+                <td>{{ pricing_rule.type }}</td>
+                <td>{{ pricing_rule.createdAt ? pricing_rule.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ pricing_rule.updatedAt ? pricing_rule.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('pricing_rule_show', {'id': pricing_rule.id}) }}">show</a>
+                    <a href="{{ path('pricing_rule_edit', {'id': pricing_rule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('pricing_rule_new') }}">Create new</a>
+{% endblock %}

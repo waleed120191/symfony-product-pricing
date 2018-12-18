@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PricingRule{% endblock %}
+
+{% block body %}
+    <h1>Create new PricingRule</h1>
+
+    {{ include('pricing_rule/_form.html.twig') }}
+
+    <a href="{{ path('pricing_rule_index') }}">back to list</a>
+{% endblock %}
